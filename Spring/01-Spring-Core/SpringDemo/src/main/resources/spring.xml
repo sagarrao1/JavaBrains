@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+   
+   <context:annotation-config/>
+   <context:component-scan base-package="com.javabrains.SpringDemo.basic"></context:component-scan>   
+   
+ 	<bean id="triangle" class="com.javabrains.SpringDemo.basic.Triangle" >		
+		<property name="pointA" ref="zeroPoint"></property>	
+		<property name="pointB" ref="point2"></property>	
+		<property name="pointC" ref="point3"></property>			
+	</bean>
+	
+	<bean id="zeroPoint" class="com.javabrains.SpringDemo.basic.Point">
+		<property name="x" value="0"></property>	
+		<property name="y" value="0"></property>
+	</bean>
+		
+	<bean id="point2" class="com.javabrains.SpringDemo.basic.Point">
+		<property name="x" value="-20"></property>	
+		<property name="y" value="0"></property>		
+	</bean>
+	
+	<bean id="point3" class="com.javabrains.SpringDemo.basic.Point">		
+		<property name="x" value="0"></property>	
+		<property name="y" value="30"></property>		
+	</bean>
+	
+<!--   ===============================ListTriangle  =================================
+   	Injecting beans in list prorperty of Triangle    --> 
+		                                            		
+ 	<bean id="listTriangle" class="com.javabrains.SpringDemo.basic.ListTriangle" >		
+		<property name="points">
+			<list>
+				<ref bean ="zeroPoint" /> 
+				<ref bean ="point2" />
+				<ref bean ="point3" />
+			</list>	
+		</property>			
+	</bean>
+	
+<!--   ===============================Triangle Autowire By name ================================= -->	
+<!-- we can Autowire byName,byType, byConstructor                -->
+<!-- 	To Autowire , it should same Name as instance variable like pointA in Triangle Class -->
+	
+ 	<bean id="triangleAutoWire" class="com.javabrains.SpringDemo.basic.Triangle" autowire="byName">		
+
+	</bean>
+
+	<bean id="pointA" class="com.javabrains.SpringDemo.basic.Point">
+		<property name="x" value="0"></property>	
+		<property name="y" value="0"></property>
+	</bean>
+		
+	<bean id="pointB" class="com.javabrains.SpringDemo.basic.Point">
+		<property name="x" value="-20"></property>	
+		<property name="y" value="0"></property>		
+	</bean>
+	
+	<bean id="pointC" class="com.javabrains.SpringDemo.basic.Point">		
+		<property name="x" value="0"></property>	
+		<property name="y" value="30"></property>		
+	</bean>
+	
+<!--   ==========Triangle2 using Application context getBean in Bean (traiangle2================================= -->	
+
+ 	<bean id="triangle2" class="com.javabrains.SpringDemo.ApplContextgetBean.Triangle2" >		
+		<property name="pointA" ref="zeroPoint"></property>	
+		<property name="pointB" ref="point2"></property>	
+		<property name="pointC" ref="point3"></property>			
+	</bean>
+	
+	
+	
+		
+</beans>

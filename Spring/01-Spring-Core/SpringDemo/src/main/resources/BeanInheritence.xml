@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+   
+   <context:annotation-config/>
+   <context:component-scan base-package="com.javabrains.SpringDemo.basic"></context:component-scan>   
+
+<!-- 	===================common beans========================== -->
+
+	<bean id="zeroPoint" class="com.javabrains.SpringDemo.basic.Point">
+		<property name="x" value="0"></property>	
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="point2" class="com.javabrains.SpringDemo.basic.Point">
+		<property name="x" value="-20"></property>	
+		<property name="y" value="0"></property>		
+	 </bean>			
+	 	
+	<bean id="point3" class="com.javabrains.SpringDemo.basic.Point">		
+		<property name="x" value="0"></property>	
+		<property name="y" value="40"></property>		
+	</bean>		
+	
+
+<!-- ====================triangle intialization with parent triangle which has pointA=
+         ========== using parent keyword ===================================== -->
+   
+   <bean id="parentTriangle" class="com.javabrains.SpringDemo.basic.Triangle" abstract="true" >
+   		<property name="pointA" ref="zeroPoint" />	
+   </bean>
+   
+ 	<bean id="triangle" class="com.javabrains.SpringDemo.basic.Triangle" parent="parentTriangle">
+		<property name="pointB" ref="point2" />
+		<property name="pointC" ref="point3" />			
+	</bean>	
+	
+	<!-- without parent -->
+ 	<bean id="triangle2" class="com.javabrains.SpringDemo.basic.Triangle">  
+		<property name="pointB" ref="point2" />
+					
+	</bean>	
+
+
+<!-- ========================================================== 
+	 using list Parent bean in required beans example
+   =======================================================================-->
+   
+   	<bean id="parentlistTriangle" class="com.javabrains.SpringDemo.basic.ListTriangle" abstract="true">		
+		<property name="points">
+			<list>
+				<ref bean ="zeroPoint" /> 
+			</list>
+		</property>
+	</bean>   	
+   
+   	<bean id="listTriangle" class="com.javabrains.SpringDemo.basic.ListTriangle" parent="parentlistTriangle">		
+		<property name="points">
+			<list>
+				<ref bean ="point2" />   <!-- it will override zeroPoint with point2 bean -->
+			</list>	
+		</property>			
+	</bean>
+   
+   	<bean id="listTriangle2" class="com.javabrains.SpringDemo.basic.ListTriangle" parent="parentlistTriangle" >		
+		<property name="points" >  
+			<list merge="true">   <!-- it will merge zeroPoint from parent with point2, point3 bean -->
+				<ref bean ="point2" />
+				<ref bean ="point3" />
+			</list>	
+		</property>			
+	</bean>
+   <!-- ======================================================================== -->
+		
+	
+</beans>

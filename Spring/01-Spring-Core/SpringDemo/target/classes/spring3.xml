@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd" >
+   <!-- default-init-method="myInit" default-destroy-method="myCleanup"> -->
+   
+   <context:annotation-config/>
+   <context:component-scan base-package="com.javabrains.SpringDemo"></context:component-scan>
+   
+ <!-- ============================common beans ============================== -->
+ 
+ 	<bean id="pointA" class="com.javabrains.SpringDemo.basic.Point">
+		<property name="x" value="${pointA.pointX}"></property>	
+		<property name="y" value="${pointA.pointY}"></property>
+	</bean>
+	
+	<bean id="pointB" class="com.javabrains.SpringDemo.basic.Point">
+		<property name="x" value="-20"></property>	
+		<property name="y" value="0"></property>
+		
+	</bean>
+	
+	<bean id="pointC" class="com.javabrains.SpringDemo.basic.Point">		
+		<property name="x" value="0"></property>	
+		<property name="y" value="20"></property>		
+	</bean>
+
+	<bean id="center" class="com.javabrains.SpringDemo.basic.Point">		
+		<property name="x" value="15"></property>	
+		<property name="y" value="15"></property>		
+	</bean>
+ 
+ <!-- ======================= BeanLife cycle beans ================================= -->   
+ 	<bean id="triangleNew" class="com.javabrains.SpringDemo.BeanLifeCycle.TriangleNew" >
+ 	                                                              <!--  init-method="myInit" destroy-method="myCleanup" -->		
+		<property name="pointA" ref="pointA"></property>	
+		<property name="pointB" ref="pointB"></property>	
+		<property name="pointC" ref="pointC"></property>			
+	</bean>
+
+<!-- ======================= Bean PostProcesser ================================= -->
+
+<!-- <bean class="com.javabrains.SpringDemo.BeanLifeCycle.DisplayBeanNamePostProcesser"></bean> -->	
+	
+<!-- ======================= Factory Bean PostProcesser ================================= -->	
+
+<!-- <bean class="com.javabrains.SpringDemo.BeanLifeCycle.MyBeanFactoryPostProcesser"></bean> -->
+	
+
+<!-- ======================= PropertyPlaceholderConfigurer ================================= -->	
+	
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+	<property name="locations" value="pointsConfig.properties"></property>
+</bean>
+	
+
+<!-- ======================= Interface Inject bean ================================= -->	
+<!-- ======================= circle bean ================================= -->	
+
+<bean id="circle" class="com.javabrains.SpringDemo.interfaceInject.Circle">
+	<property name="center" ref="center"></property>
+</bean>
+
+<!-- ======================= triangle bean ================================= -->
+	
+ 	<bean id="triangle" class="com.javabrains.SpringDemo.interfaceInject.Triangle" > 	                                                              		
+		<property name="pointA" ref="pointA"></property>	
+		<property name="pointB" ref="pointB"></property>	
+		<property name="pointC" ref="pointC"></property>			
+	</bean>
+	
+<!-- ======================= triangle bean ================================= -->
+
+</beans>
