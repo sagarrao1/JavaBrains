@@ -15,12 +15,5 @@ public class AnnotationAspect {
 	
 	@Pointcut("execution(* get*(..))")
 	public void allGetters() {}
-
-
-	@Pointcut("within(com.javabrains.aop.model.Circle)")
-	public void allCircleMethods() {}
-	
-	
-
 	
 }

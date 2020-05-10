@@ -34,7 +34,6 @@
  	<bean id="beforeLoggingAspect" class="com.javabrains.aop.aspect.BeforeLoggingAspect">		
 	</bean>
 
-
 <!-- ===============================Logging Aspect=================================	-->
  	<bean id="afterLoggingAspect" class="com.javabrains.aop.aspect.AfterLoggingAspect">		
 	</bean>
@@ -46,6 +45,5 @@
 <!-- ===============================Logging Aspect=================================	-->
  	<bean id="annotationAspect" class="com.javabrains.aop.aspect.AnnotationAspect">		
 	</bean>
-		
-		
+
 </beans>

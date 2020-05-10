@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+   
+   <context:annotation-config/>
+   <context:component-scan base-package="com.javabrains.SpringJdbc"></context:component-scan>
+
+	<!-- org.springframework.jdbc.datasource.DriverManagerDataSource -->
+<!-- 	The above dataSource class gets new connections everytime
+	belowd ataSource class manages db connection pool. below is good for production -->
+ 	
+   <bean name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+   		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+   		<property name="url" value="jdbc:mysql://localhost:3306/hibdb"></property>
+   		<property name="username" value="root"></property>
+   		<property name="password" value="admin"></property>
+   		<property name="initialSize" value="2"></property>
+   		<property name="maxTotal" value="5"></property>
+   </bean>
+
+	<bean name="jdbcTemplateDaoImpl" class="com.javabrains.SpringJdbc.dao.JdbcTemplateDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>   
+ 
+ </beans>   
