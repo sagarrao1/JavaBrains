@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.javabrains.learning</groupId>
@@ -15,32 +16,32 @@
   </properties>
 
   <dependencies>
+  
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		    <scope>test</scope>
+		</dependency>
+
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>5.2.4.RELEASE</version>      
     </dependency>
-    
-            <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-context</artifactId>
-	    <version>4.2.4.RELEASE</version>
+	    <version>5.2.4.RELEASE</version>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-aspects</artifactId>
-	    <version>4.2.4.RELEASE</version>
-	</dependency>
-
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-jdbc</artifactId>
-	    <version>4.2.4.RELEASE</version>
+	    <version>5.2.4.RELEASE</version>
 	</dependency>
 
 	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
@@ -50,18 +51,27 @@
 	    <version>2.6.0</version>
 	</dependency>
 	
-<!--     <dependency>
+    <dependency>
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-core</artifactId>
 	    <version>5.4.0.Final</version>
 	</dependency>
- -->    
+	
 	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>
 	    <groupId>mysql</groupId>
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.17</version>
 	</dependency>
-    
+
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-orm</artifactId>
+	    <version>5.2.4.RELEASE</version>
+	</dependency>
+	
   </dependencies>
+
+
 </project>

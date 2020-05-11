@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.javabrains.SpringJdbc.dao.JdbcDaoImpl;
+import com.javabrains.SpringJdbc.dao.JdbcTemplateDaoImpl;
 import com.javabrains.SpringJdbc.model.Circle;
 
 public class JdbcDemo {
@@ -27,11 +28,15 @@ public class JdbcDemo {
 			
 		}
 		
-		//dao.insertCircle(new Circle(6, "sIX circle"));
-		//dao.createTrianlgeTable();
+		dao.insertCircle(new Circle(6, "sIX circle"));
+//		dao.createTrianlgeTable();
 		
-//		JdbcTemplateDaoImpl dao2= ctx.getBean("jdbcTemplateDaoImpl", JdbcTemplateDaoImpl.class);
-//		System.out.println("dao2 : "+dao2.getCircleCount());
+		
+		/* Another way of creating jdbcdaoImpl using spring JdbcDaoSupport */
+		JdbcTemplateDaoImpl dao2= ctx.getBean("jdbcTemplateDaoImpl", JdbcTemplateDaoImpl.class);
+		System.out.println();
+		System.out.println("Another way of creating jdbcdaoImpl using spring JdbcDaoSupport ");
+		System.out.println("dao2 no.of records of circle : "+dao2.getCircleCount());
 			
 	}
 }
