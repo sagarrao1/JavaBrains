@@ -27,6 +27,25 @@
 
 	<bean name="jdbcTemplateDaoImpl" class="com.javabrains.SpringJdbc.dao.JdbcTemplateDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
-	</bean>   
+	</bean> 
+	
+	<!-- =======================Integrating spring with Hibernate via mySql DB============================== -->
+	
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="packagesToScan" value="com.javabrains.SpringJdbc.model"></property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+			</props>
+		</property>
+			
+	</bean>	   
+ 
+<!-- 	<bean name="hibernateDaoImpl" class="com.javabrains.SpringJdbc.dao.HibernateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>  -->
+ 
  
  </beans>   
