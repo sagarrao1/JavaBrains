@@ -1,0 +1,14 @@
+By code also we can publish web service without glassfish deploying it to glassfish server.
+using Endpoint class publish method in jdk
+
+crate class TestMartPublisher
+
+run the main program of java class TestMartPublisher
+new wsdl url
+
+
+http://localhost:1234/productcatalog?wsdl
+
+
+if you use this, it is single thread
+if you publish using glass fish server, it is multi threaded

@@ -1,0 +1,10 @@
+
+create service endpoint sei
+create folder src
+import wsdl using below command
+
+wsimport -keep -s src https://www.w3schools.com/xml/tempconvert.asmx?WSDL
+
+
+service : TempConvert
+port : TempConvertSoap
