@@ -1,0 +1,22 @@
+OPen TestMart project in java brains soap web services producer folder
+and run TestMart Publisher to web service server up and running,
+ so that we can consume product catalog web service as a client
+
+leave console window open, do not terminate red icon
+
+open TestProductCatalog prooject
+run Main classs to consume web service as a client   
+
+in our code we need to use below wsdl and generate java code using wsimport for xml's
+http://localhost:1234/productcatalog?wsdl
+
+
+go to above client project folder in command prompt and run below command
+
+wsimport -keep -verbose -s ./src/ -d ./bin/ http://localhost:1234/productcatalog?wsdl
+
+
+if you use this jdk publisher, it is single thread
+if you publish using glass fish server, it is multi threaded
+
+jdk and glassfish internally uses metro implementer for JAX-WS specification
