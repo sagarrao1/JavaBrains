@@ -10,7 +10,7 @@
    http://www.springframework.org/schema/context/spring-context-4.0.xsd">
    
    <context:annotation-config/>
-   <context:component-scan base-package="com.javabrains.SpringDemo.basic"></context:component-scan>   
+   <context:component-scan base-package="com.javabrains.SpringDemo"></context:component-scan>   
    
  	<bean id="triangle" class="com.javabrains.SpringDemo.basic.Triangle" >		
 		<property name="pointA" ref="zeroPoint"></property>	
@@ -36,7 +36,7 @@
 <!--   ===============================ListTriangle  =================================
    	Injecting beans in list prorperty of Triangle    --> 
 		                                            		
- 	<bean id="listTriangle" class="com.javabrains.SpringDemo.basic.ListTriangle" >		
+ 	<!-- <bean id="listTriangle" class="com.javabrains.SpringDemo.basic.ListTriangle" >		
 		<property name="points">
 			<list>
 				<ref bean ="zeroPoint" /> 
@@ -44,16 +44,16 @@
 				<ref bean ="point3" />
 			</list>	
 		</property>			
-	</bean>
+	</bean> -->
 	
 <!--   ===============================Triangle Autowire By name ================================= -->	
 <!-- we can Autowire byName,byType, byConstructor                -->
 <!-- 	To Autowire , it should same Name as instance variable like pointA in Triangle Class -->
 	
- 	<bean id="triangleAutoWire" class="com.javabrains.SpringDemo.basic.Triangle" autowire="byName">		
+ 	<!-- <bean id="triangleAutoWire" class="com.javabrains.SpringDemo.basic.Triangle" autowire="byName">		
 
 	</bean>
-
+ -->
 	<bean id="pointA" class="com.javabrains.SpringDemo.basic.Point">
 		<property name="x" value="0"></property>	
 		<property name="y" value="0"></property>
@@ -71,13 +71,21 @@
 	
 <!--   ==========Triangle2 using Application context getBean in Bean (traiangle2================================= -->	
 
- 	<bean id="triangle2" class="com.javabrains.SpringDemo.ApplContextgetBean.Triangle2" >		
+ 	<!-- <bean id="triangle2" class="com.javabrains.SpringDemo.ApplContextgetBean.Triangle2" >		
 		<property name="pointA" ref="zeroPoint"></property>	
 		<property name="pointB" ref="point2"></property>	
 		<property name="pointC" ref="point3"></property>			
+	</bean> -->
+	
+	
+	<!--   ==========Rectangle using Application context using setter inject and constructor injection ============================= -->	
+
+ 	<bean id="rectangle" class="com.javabrains.SpringDemo.basic.Rectangle" >
+ 		<property name="type" value="SagarRectangle"/>	
+ 		<property name="height" value="30"/> 		
+ 		
+ 		<!-- <constructor-arg type="java.lang.String" index="0" value="Sagar Rectangle"/>		
+ 		<constructor-arg type="int" index="1" value="20"/> -->					
 	</bean>
-	
-	
-	
 		
 </beans>

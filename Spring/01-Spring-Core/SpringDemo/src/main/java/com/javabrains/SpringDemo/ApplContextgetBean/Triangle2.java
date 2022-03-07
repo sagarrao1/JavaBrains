@@ -72,7 +72,7 @@ public class Triangle2 implements ApplicationContextAware , BeanNameAware {
 
 	@Override
 	public void setBeanName(String beanName) {
-		System.out.println("Bean name is: "+beanName);
+//		System.out.println("Bean name is: "+beanName);
 		
 	}
 
