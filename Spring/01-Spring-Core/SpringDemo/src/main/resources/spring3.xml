@@ -16,46 +16,49 @@
  <!-- ============================common beans ============================== -->
  
  	<bean id="pointA" class="com.javabrains.SpringDemo.basic.Point">
+ 		<qualifier value="circleRelated"></qualifier>
 		<property name="x" value="${pointA.pointX}"></property>	
 		<property name="y" value="${pointA.pointY}"></property>
 	</bean>
 	
-	<bean id="pointB" class="com.javabrains.SpringDemo.basic.Point">
+	 <bean id="pointB" class="com.javabrains.SpringDemo.basic.Point">
 		<property name="x" value="-20"></property>	
 		<property name="y" value="0"></property>
 		
 	</bean>
 	
-	<bean id="pointC" class="com.javabrains.SpringDemo.basic.Point">		
+	 <bean id="pointC" class="com.javabrains.SpringDemo.basic.Point">		
 		<property name="x" value="0"></property>	
 		<property name="y" value="20"></property>		
 	</bean>
 
 	<bean id="center" class="com.javabrains.SpringDemo.basic.Point">		
-		<property name="x" value="15"></property>	
+		<property name="x" value="12"></property>	
 		<property name="y" value="15"></property>		
-	</bean>
+	</bean> 
  
  <!-- ======================= BeanLife cycle beans ================================= -->   
  	<bean id="triangleNew" class="com.javabrains.SpringDemo.BeanLifeCycle.TriangleNew" >
- 	                                                              <!--  init-method="myInit" destroy-method="myCleanup" -->		
+ 	                                                               <!-- init-method="myInit" destroy-method="myCleanup" > -->		
 		<property name="pointA" ref="pointA"></property>	
 		<property name="pointB" ref="pointB"></property>	
 		<property name="pointC" ref="pointC"></property>			
 	</bean>
 
-<!-- ======================= Bean PostProcesser ================================= -->
+<!-- ======================= Bean PostProcesser implemtation================================= -->
 
-<!-- <bean class="com.javabrains.SpringDemo.BeanLifeCycle.DisplayBeanNamePostProcesser"></bean> -->	
+<!-- <bean class="com.javabrains.SpringDemo.BeanLifeCycle.DisplayBeanNamePostProcesser"/> -->	
 	
 <!-- ======================= Factory Bean PostProcesser ================================= -->	
 
 <!-- <bean class="com.javabrains.SpringDemo.BeanLifeCycle.MyBeanFactoryPostProcesser"></bean> -->
 	
 
-<!-- ======================= PropertyPlaceholderConfigurer ================================= -->	
+<!-- ======================= PropertyPlaceholderConfigurer ================================= 
+PropertyPlaceholderConfigurer is deprecated so using org.springframework.context.support.PropertySourcesPlaceholderConfigurer
+-->	
 	
-<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" >
 	<property name="locations" value="pointsConfig.properties"></property>
 </bean>
 	
@@ -64,8 +67,18 @@
 <!-- ======================= circle bean ================================= -->	
 
 <bean id="circle" class="com.javabrains.SpringDemo.interfaceInject.Circle">
-	<property name="center" ref="center"></property>
+<!-- 	<property name="center" ref="center"></property> -->
 </bean>
+
+<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean>
+
+<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+
+<!-- 
+BECAUSE of above and required annotation it will not throw null pointer at draw method. it will fail bean initialization
+org.springframework.beans.factory.BeanInitializationException: Property 'center' is required for bean 'circle'
+
+ -->
 
 <!-- ======================= triangle bean ================================= -->
 	
@@ -76,5 +89,7 @@
 	</bean>
 	
 <!-- ======================= triangle bean ================================= -->
+
+
 
 </beans>

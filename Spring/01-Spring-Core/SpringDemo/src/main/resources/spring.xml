@@ -13,9 +13,16 @@
    <context:component-scan base-package="com.javabrains.SpringDemo"></context:component-scan>   
    
  	<bean id="triangle" class="com.javabrains.SpringDemo.basic.Triangle" >		
-		<property name="pointA" ref="zeroPoint"></property>	
-		<property name="pointB" ref="point2"></property>	
-		<property name="pointC" ref="point3"></property>			
+		<property name="pointA" ref="zeroPoint"/>	
+		<property name="pointB" ref="point2"/>	
+		<!-- <property name="pointC" ref="point3"></property> -->
+		
+		<property name="pointC" >
+			<bean class="com.javabrains.SpringDemo.basic.Point">		
+				<property name="x" value="0"></property>	
+				<property name="y" value="30"></property>			
+			</bean>
+		</property>			
 	</bean>
 	
 	<bean id="zeroPoint" class="com.javabrains.SpringDemo.basic.Point">
@@ -32,50 +39,69 @@
 		<property name="x" value="0"></property>	
 		<property name="y" value="30"></property>		
 	</bean>
-	
+
+ 
+ <alias name="triangle" alias="triangle-alias"/>
+ 
+ 	
 <!--   ===============================ListTriangle  =================================
    	Injecting beans in list prorperty of Triangle    --> 
+
+<!-- bean inheritence using	Parent bean can be used ListTriangle-->
+ 	<bean id="listTriangleParent" class="com.javabrains.SpringDemo.basic.ListTriangle" >		
+			<property name="points">
+				<list>
+					<ref bean="zeroPoint"/>
+					<ref bean="point2"/>
+					<ref bean="point3"/>
+				</list>		
+			</property>
+	
+		</bean>
+
 		                                            		
- 	<!-- <bean id="listTriangle" class="com.javabrains.SpringDemo.basic.ListTriangle" >		
-		<property name="points">
-			<list>
-				<ref bean ="zeroPoint" /> 
-				<ref bean ="point2" />
-				<ref bean ="point3" />
-			</list>	
-		</property>			
-	</bean> -->
+ 	<!-- <bean id="listTriangle" class="com.javabrains.SpringDemo.basic.ListTriangle" parent="listTriangleParent"> -->
+ 	<bean id="listTriangle" class="com.javabrains.SpringDemo.basic.ListTriangle">		
+		<property name="points" >
+			<list merge="true">
+				<ref bean="zeroPoint"/>
+				<ref bean="point2"/>
+				<ref bean="point3"/>
+			</list>		
+		</property>
+
+	</bean>
 	
 <!--   ===============================Triangle Autowire By name ================================= -->	
 <!-- we can Autowire byName,byType, byConstructor                -->
 <!-- 	To Autowire , it should same Name as instance variable like pointA in Triangle Class -->
 	
- 	<!-- <bean id="triangleAutoWire" class="com.javabrains.SpringDemo.basic.Triangle" autowire="byName">		
+ 	<bean id="triangleAutoWire" class="com.javabrains.SpringDemo.basic.Triangle" autowire="byName">		
 
 	</bean>
- -->
-	<bean id="pointA" class="com.javabrains.SpringDemo.basic.Point">
+
+	<bean id="pointA" class="com.javabrains.SpringDemo.basic.Point" >
 		<property name="x" value="0"></property>	
 		<property name="y" value="0"></property>
 	</bean>
 		
 	<bean id="pointB" class="com.javabrains.SpringDemo.basic.Point">
-		<property name="x" value="-20"></property>	
+		<property name="x" value="-10"></property>	
 		<property name="y" value="0"></property>		
 	</bean>
 	
 	<bean id="pointC" class="com.javabrains.SpringDemo.basic.Point">		
 		<property name="x" value="0"></property>	
-		<property name="y" value="30"></property>		
+		<property name="y" value="20"></property>		
 	</bean>
 	
 <!--   ==========Triangle2 using Application context getBean in Bean (traiangle2================================= -->	
 
- 	<!-- <bean id="triangle2" class="com.javabrains.SpringDemo.ApplContextgetBean.Triangle2" >		
+ 	<bean id="triangle2" class="com.javabrains.SpringDemo.ApplContextgetBean.Triangle2"  init-method="myInit" destroy-method="myCleanup">		
 		<property name="pointA" ref="zeroPoint"></property>	
 		<property name="pointB" ref="point2"></property>	
 		<property name="pointC" ref="point3"></property>			
-	</bean> -->
+	</bean>
 	
 	
 	<!--   ==========Rectangle using Application context using setter inject and constructor injection ============================= -->	
@@ -87,5 +113,20 @@
  		<!-- <constructor-arg type="java.lang.String" index="0" value="Sagar Rectangle"/>		
  		<constructor-arg type="int" index="1" value="20"/> -->					
 	</bean>
+		
+		
+	 <!-- bean inheritence using	Parent bean -->
+	 <bean id="ParentTriangle" class="com.javabrains.SpringDemo.ApplContextgetBean.Triangle2" abstract="true">		
+		<property name="pointA" ref="pointA"></property>	 
+	 </bean>
+	 
+	 <bean id="triangle3" class="com.javabrains.SpringDemo.ApplContextgetBean.Triangle2" parent="ParentTriangle">		
+		<property name="pointB" ref="pointB"></property>	 
+		<!-- <property name="pointC" ref="pointC"></property> -->
+	 </bean>
+	 
+	 <bean id="triangle4" class="com.javabrains.SpringDemo.ApplContextgetBean.Triangle2" parent="triangle3">		
+		<property name="pointC" ref="pointC"></property>
+	 </bean>	 
 		
 </beans>

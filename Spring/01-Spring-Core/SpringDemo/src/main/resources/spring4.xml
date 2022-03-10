@@ -26,8 +26,8 @@
 	</bean>
 
  	<bean id="center" class="com.javabrains.SpringDemo.basic.Point">
-		<property name="x" value="${pointA.pointX}"></property>	
-		<property name="y" value="${pointA.pointY}"></property>
+		<property name="x" value="5"></property>	
+		<property name="y" value="5"></property>
 	</bean>
 	
 
@@ -39,11 +39,11 @@
 	 
 <!-- ======================= Interface Inject bean using Annotation ================================= -->	
 <!-- ======================= circle bean ================================= -->	
-
-<bean id="circle2" class="com.javabrains.SpringDemo.Annotation.Circle2" autowire="byName">
+<!-- autowire="byName" -->
+<!-- <bean id="circle2" class="com.javabrains.SpringDemo.Annotation.Circle2" >
 	<property name="center" ref="center"></property>
 </bean>
-
+ -->
 
 <!-- ======================= triangle bean ================================= -->
 	

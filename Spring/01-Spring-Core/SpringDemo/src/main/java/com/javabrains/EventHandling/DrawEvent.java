@@ -1,11 +1,11 @@
-package com.javabrains.SpringDemo.AppCtxAdditonalFeatures;
+package com.javabrains.EventHandling;
 
 import org.springframework.context.ApplicationEvent;
 
 public class DrawEvent extends ApplicationEvent{
 
 	public DrawEvent(Object source) {
-		super(source);		
+		super(source);
 	}
 
 	@Override

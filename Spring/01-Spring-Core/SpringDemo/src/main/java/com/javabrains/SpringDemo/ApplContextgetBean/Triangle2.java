@@ -8,10 +8,10 @@ import org.springframework.context.ApplicationContextAware;
 import com.javabrains.SpringDemo.basic.Point;
 
 //Using Application context getBean  in your bean (Trianngle)
-//when we use this, when Triangle scope is singleton, pointA asre prototype
+//when we use this, when Triangle scope is singleton, pointA as prototype
 // you will be able to use getBean of pointA , if you want to do that you need to get application context get bean in you bean
 
-public class Triangle2 implements ApplicationContextAware , BeanNameAware {
+public class Triangle2 implements ApplicationContextAware , BeanNameAware   {
 	
 	private Point pointA;
 	private Point pointB;
@@ -42,20 +42,25 @@ public class Triangle2 implements ApplicationContextAware , BeanNameAware {
 
 
 	public void draw() {
+//		Point p = context.getBean("pointA", Point.class);
+//		Point p2 = context.getBean("pointA", Point.class);
+//		System.out.println(p);
+//		System.out.println(p2);
+		
 		System.out.println("draw method of triangle");
 		System.out.println( "PointA = "+getPointA()+", PointB = "+pointB +" PointC = "+getPointC());
 	}
 
-	public void afterPropertiesSet() throws Exception {
-		System.out.println(" Initialized bean method has been called in Triangle");
-		
-	}
-
-	public void destroy() throws Exception {
-		System.out.println(" destroy bean method has been called in Triangle");
-		
-	}
-	
+//	public void afterPropertiesSet() throws Exception {
+//		System.out.println(" Initialized bean method has been called in Triangle");
+//		
+//	}
+//
+//	public void destroy() throws Exception {
+//		System.out.println(" destroy bean method has been called in Triangle");
+//		
+//	}
+//	
 	public void myInit() {
 		System.out.println(" myInit Initialized bean method has been called in Triangle");
 	}
@@ -67,6 +72,7 @@ public class Triangle2 implements ApplicationContextAware , BeanNameAware {
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.context=applicationContext;
+//		System.out.println("applicationConect is passed to context variable");
 		
 	}
 

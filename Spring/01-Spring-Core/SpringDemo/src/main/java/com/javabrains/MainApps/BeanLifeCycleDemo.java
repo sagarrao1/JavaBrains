@@ -8,8 +8,10 @@ import com.javabrains.SpringDemo.BeanLifeCycle.TriangleNew;
 
 public class BeanLifeCycleDemo 
 {
-    public static void main( String[] args )
+
+	public static void main( String[] args )
     {
+    	
         //Triangle t= new Triangle();
     	try(ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring3.xml")){
 //    		context.registerShutdownHook();

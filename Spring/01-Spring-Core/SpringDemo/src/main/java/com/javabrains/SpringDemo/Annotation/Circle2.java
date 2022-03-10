@@ -1,12 +1,14 @@
 package com.javabrains.SpringDemo.Annotation;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Component;
 
 import com.javabrains.SpringDemo.basic.Point;
 import com.javabrains.SpringDemo.interfaceInject.Shape;
 
 //@Service
-@Component
+//@Component
 public class Circle2 implements Shape/* , ApplicationEventPublisherAware */ {
 
 	private Point center;
@@ -26,7 +28,8 @@ public class Circle2 implements Shape/* , ApplicationEventPublisherAware */ {
 		return center;
 	}
 
-//	@Resource(name = "pointA")   // JSR-250 standard  JSR = Java specification Request (Java standard)
+	@Resource(name = "pointA")   // JSR-250 standard  JSR = Java specification Request (Java standard)
+//	@Resource
 //	@Autowired
 //	@Qualifier("circleRelated")
 	public void setCenter(Point center) {

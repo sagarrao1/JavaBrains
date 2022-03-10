@@ -1,10 +1,10 @@
-package com.javabrains.SpringDemo.AppCtxAdditonalFeatures;
+package com.javabrains.EventHandling;
 
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class MyEventListener implements ApplicationListener{
 
 	public void onApplicationEvent(ApplicationEvent event) {

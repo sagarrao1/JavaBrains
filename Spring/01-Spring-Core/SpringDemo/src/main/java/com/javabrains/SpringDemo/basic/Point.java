@@ -1,6 +1,8 @@
 package com.javabrains.SpringDemo.basic;
 
-public class Point {
+import org.springframework.beans.factory.BeanNameAware;
+
+public class Point /* implements BeanNameAware */{
 	private int x;
 	private int y;
 	
@@ -18,10 +20,16 @@ public class Point {
 		this.y = y;
 	}
 	
+	
 	@Override
-	public String toString() {
+	public String toString() {		
 		return "Point [x=" + x + ", y=" + y + "]";
 	}
+	
+	/*
+	 * @Override public void setBeanName(String beanName) {
+	 * System.out.println("Bean name is: "+beanName); }
+	 */
 	
 	
 	
