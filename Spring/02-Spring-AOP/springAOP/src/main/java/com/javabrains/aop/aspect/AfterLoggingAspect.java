@@ -1,7 +1,9 @@
 package com.javabrains.aop.aspect;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
 //@Aspect
@@ -39,19 +41,19 @@ public class AfterLoggingAspect {
 //	}
 
 
-	//executes only after successful execution of method
+//	executes only after successful execution of method
 //	@AfterReturning("args(name)")
 //	public void stringArgumentsMethods(String name) { // this is advice
 //		System.out.println("A method that takes String as argument has been called. The value is : "+name);
 //	}
 
-	@AfterReturning(pointcut = "args(name)", returning = "returnString")
-	public void setNameandReturnmethodcall(String name, String returnString) { // this is advice
-		System.out.println("A method that takes String as argument has been called. The value is : "+name+""
-				+ " and Return value is :"+returnString);
-	}
-
-	
+//	@AfterReturning(pointcut = "args(name)", returning = "returnString")
+//	public void setNameandReturnmethodcall(String name, String returnString) { // this is advice
+//		System.out.println("A method that takes String as argument has been called. The value is : "+name+""
+//				+ " and Return value is :"+returnString);
+//	}
+//
+//	
 	@AfterThrowing(pointcut = "args(name)", throwing = "ex")
 	public void afterThrowingadviceexpetion(String name, RuntimeException ex) { // this is advice
 		System.out.println("An excpetion has thrown ....: "+ex);
