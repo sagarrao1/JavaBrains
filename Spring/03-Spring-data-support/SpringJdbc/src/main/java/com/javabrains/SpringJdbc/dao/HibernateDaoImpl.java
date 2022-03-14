@@ -13,8 +13,10 @@ public class HibernateDaoImpl {
 		
 	public int getCircleCount() {
 		String hql= "select count(*) from Circle";
-		Query query = getSessionFactory().openSession().createQuery(hql);
+		Query query = sessionFactory.openSession().createQuery(hql);
+//		System.out.println("HibernateDaoImpl getCircleCount() method");		
 		return ((Long) query.uniqueResult()).intValue();
+		
 	}
 
 	/* setters and getters of session factory */

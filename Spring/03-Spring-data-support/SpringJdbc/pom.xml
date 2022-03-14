@@ -12,9 +12,12 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+		<spring.version>5.3.16</spring.version>
   </properties>
-
+  
   <dependencies>
   
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -28,20 +31,20 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>5.2.4.RELEASE</version>      
+      <version>${spring.version}</version>
     </dependency>
 
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-context</artifactId>
-	    <version>5.2.4.RELEASE</version>
+	    <version>${spring.version}</version>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-jdbc</artifactId>
-	    <version>5.2.4.RELEASE</version>
+	    <version>${spring.version}</version>
 	</dependency>
 
 	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
@@ -68,7 +71,7 @@
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-orm</artifactId>
-	    <version>5.2.4.RELEASE</version>
+	    <version>${spring.version}</version>
 	</dependency>
 	
   </dependencies>

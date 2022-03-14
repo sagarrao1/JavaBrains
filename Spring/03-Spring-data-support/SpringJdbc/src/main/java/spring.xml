@@ -17,6 +17,7 @@
 	belowd ataSource class manages db connection pool. below is good for production -->
  	
    <bean name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+   <!-- <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  does not support pooling int size and max -->
    		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
    		<property name="url" value="jdbc:mysql://localhost:3306/hibdb"></property>
    		<property name="username" value="root"></property>
@@ -39,8 +40,8 @@
 			<props>
 				<prop key="dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
 			</props>
-		</property>
-			
+		</property>			
 	</bean>	   
+ 
  
  </beans>   

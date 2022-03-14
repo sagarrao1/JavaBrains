@@ -46,6 +46,7 @@ public class PlainJdbcDaoImpl {
 			}
 			rs.close();
 			ps.close();
+			System.out.println("This is from using plain jdbc and from PlainJdbcDaoImpl");
 			return circle;
 		} catch (Exception e) {
 			System.out.println(e);
