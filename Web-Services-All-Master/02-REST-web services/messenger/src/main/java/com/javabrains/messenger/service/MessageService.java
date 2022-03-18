@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.javabrains.messenger.database.DatabaseClass;
+import com.javabrains.messenger.exception.DataNotFoundException;
 import com.javabrains.messenger.model.Message;
 
 public class MessageService {
@@ -62,7 +63,11 @@ public class MessageService {
 	}
 
 	public Message getMessage(long id) {
-		return messages.get(id);
+		Message message = messages.get(id);
+		if (message == null) {
+			throw new DataNotFoundException("Message with id : "+id+ " not found");
+		}
+		return message;
 	}
 
 	public void removeMessage(long id) {
