@@ -14,7 +14,8 @@ public class MyResource {
 		return "test method"; 
 	}
 
-}
-
-/* url */ 
-/*	http://localhost:8080/Advanced-JaxRs-01/webapi/test */
+	/*
+	 * URI to test 
+	 * 
+	 * http://localhost:8080/Advanced-JaxRs-06/webapi/test
+	 */}
