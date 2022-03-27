@@ -17,4 +17,4 @@ public class MyResource {
 }
 
 /* url */ 
-/*	http://localhost:8080/Advanced-JaxRs-01/webapi/test */
+/*	http://localhost:8080/Advanced-JaxRs-07/webapi/test */

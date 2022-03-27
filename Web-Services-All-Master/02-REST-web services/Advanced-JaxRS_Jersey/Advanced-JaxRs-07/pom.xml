@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.javabrains</groupId>
-	<artifactId>Advanced-JaxRs-02</artifactId>
+	<artifactId>Advanced-JaxRs-07</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Advanced-JaxRs-02 Maven Webapp</name>
+	<name>Advanced-JaxRs-07 Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.bundles/jaxrs-ri -->
@@ -55,7 +55,7 @@
 		    <artifactId>jersey-container-servlet</artifactId>
 		    <version>${jersey.version}</version>
 		</dependency>
-
+		
 	</dependencies>
 
 	<properties>
@@ -66,7 +66,7 @@
 	</properties>
 
 	<build>
-		<finalName>Advanced-JaxRs-02</finalName>
+		<finalName>Advanced-JaxRs-07</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
