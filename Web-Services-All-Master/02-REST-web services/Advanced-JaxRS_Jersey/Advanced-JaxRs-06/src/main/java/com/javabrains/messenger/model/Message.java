@@ -78,6 +78,14 @@ public class Message {
 		links.add(link);
 	}
 	
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", message=" + message + ", created=" + created + ", author=" + author
+				+ ", comments=" + comments + ", links=" + links + "]";
+	}
+	
+	
+	
 	
 	
 }
