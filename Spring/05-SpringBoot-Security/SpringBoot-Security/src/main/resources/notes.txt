@@ -1,0 +1,10 @@
+user name can be anything
+password will be on console output
+
+uri : http://localhost:8080/
+
+if you want to user custom user name and password ,
+ you will set below in application.properties
+ 
+spring.security.user.name=sagar
+spring.security.user.password=sagar
