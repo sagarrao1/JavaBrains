@@ -1,0 +1,8 @@
+
+spring security schema tables for each DB
+below is one for h2 database
+
+https://docs.spring.io/spring-security/site/docs/3.0.x/reference/appendix-schema.html
+
+just add sql to schema.sql in main/resources so that spring boot picks up and 
+creates tables in h2 db while booting application
