@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
+//	authentication
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
@@ -25,6 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		
 	}
 	
+//	authorization
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
