@@ -1,0 +1,23 @@
+
+mysql queries
+
+use hibdb;
+
+show schemas;
+
+select * from hibdb.users;
+
+
+create table hibdb.users(  
+  username varchar(255),
+  password varchar(255),
+  active boolean,
+  roles varchar(255));
+  
+  insert into hibdb.users values('user','pass',true,'ROLE_USER');
+  insert into hibdb.users values('admin','admin123',true,'ROLE_USER,ROLE_ADMIN');
+  
+  select * from hibdb.users;
+  delete from hibdb.users;
+  delete from hibdb.users where username in ('user');  
+  

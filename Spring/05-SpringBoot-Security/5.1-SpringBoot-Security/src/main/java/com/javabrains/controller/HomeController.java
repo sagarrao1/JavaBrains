@@ -9,16 +9,16 @@ public class HomeController {
 	 
 	@GetMapping("/")
 	public String getPage() {
-		return "<h1> Welcome </h1>";
+		return "<h1> Welcome InMemory user </h1>";
 	}
 
 	@GetMapping("/user")
 	public String getUserPage() {
-		return "<h1> Welcome user </h1>";
+		return "<h1> Welcome InMemory user </h1>";
 	}
 	
 	@GetMapping("/admin")
 	public String getAdminPage() {
-		return "<h1> Welcome admin</h1>";
+		return "<h1> Welcome InMemory admin</h1>";
 	}
 }

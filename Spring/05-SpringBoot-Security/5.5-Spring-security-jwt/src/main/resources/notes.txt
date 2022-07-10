@@ -1,0 +1,9 @@
+user and password to login will be there in MyUserDetailsService service class
+ 
+user=foo
+password=foo
+
+we are not using MyUserDetails class here and created dummy foo user and password and not doing any roles 
+authority as well as we need to learn JWT authorization  concept practice
+
+

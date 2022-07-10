@@ -1,0 +1,9 @@
+More infor ldap
+https://spring.io/guides/gs/authenticating-ldap/#:~:text=Spring%20Boot%20provides%20auto%2Dconfiguration,org%20in%20the%20LDAP%20server.
+
+user and password will be in above url. password is encrypted using and we need to use
+BCryptPasswordEncoder class in password Encoder in configurer authentication method. 
+and no need to use NoOpPasswordEncoder bean as we are using encrypted passwords 
+
+user= ben
+password=benspassword

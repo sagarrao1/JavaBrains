@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
-
 //	authentication
 	
 	@Autowired
@@ -24,6 +23,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication()
 			.dataSource(dataSource);
+			
+//		to use sql queries if table names are different		
+//			.usersByUsernameQuery("select username, password, enabled from users where username= ?")
+//			.authoritiesByUsernameQuery("select username, authority from authorities where username= ?");
 			
 //			we don't need below as we have created default and tables using schema.sql and data.sql
 //			.withDefaultSchema()
@@ -46,8 +49,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
 			.antMatchers("/").permitAll()
-			.antMatchers("/admin").hasRole("ADMIN")
-			.antMatchers("/user").hasAnyRole("ADMIN","USER")
+			.antMatchers("/user").hasRole("USER")
+			.antMatchers("/admin").hasAnyRole("ADMIN","USER")
 			.and().formLogin();
 	}
 	
