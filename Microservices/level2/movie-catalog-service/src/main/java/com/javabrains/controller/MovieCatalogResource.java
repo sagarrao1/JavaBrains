@@ -13,6 +13,8 @@ import com.javabrains.model.CatalogItem;
 import com.javabrains.model.Movie;
 import com.javabrains.model.Rating;
 import com.javabrains.model.UserRating;
+import com.javabrains.services.MovieInfo;
+import com.javabrains.services.UserRatingInfo;
 
 @RestController
 @RequestMapping("/catalog")
@@ -21,10 +23,17 @@ public class MovieCatalogResource {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	@Autowired
+	UserRatingInfo userRatingInfo;
+	
+	@Autowired
+	MovieInfo movieInfo;
+	
 //	@Autowired
 //	private WebClient.Builder webClientBuilder;
 	
 	@RequestMapping("/{userId}")
+//	@HystrixCommand(fallbackMethod = "getFallbackCatalog")
 	public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
 		
 		List<CatalogItem> catalogItems = new ArrayList<>();
@@ -45,16 +54,17 @@ public class MovieCatalogResource {
 		
 		
 //		Using Eurekha discovery service, we are removing hard coded uri (localhost:8083) to service name
-		UserRating ratings = restTemplate.getForObject("http://ratings-data-service/ratingsdata/users/"+userId, UserRating.class);
 		
-		
+				
+		UserRating ratings = userRatingInfo.getUserRating(userId);	
 		
 		
 //		2. for each movie id,call movie info service and get details
 		 for (Rating rating : ratings.getUserRating()) {			 
 //			 Movie[] movies = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(), Movie[].class);
 		
-			 Movie movie = restTemplate.getForObject("http://movie-info-service/movies/"+rating.getMovieId(), Movie.class);
+			 
+			 Movie movie = movieInfo.getCatalogItem(rating);
 			 
 			 
 			 
@@ -62,11 +72,23 @@ public class MovieCatalogResource {
 //				System.out.println(movie);
 //			}
 			 
-			 catalogItems.add(new CatalogItem(movie.getName(), "Test", rating.getRating()));
+			 catalogItems.add(new CatalogItem(movie.getName(), "", rating.getRating()));
 		}		
 		return catalogItems;
 	}
+
+
+	
+//	public List<CatalogItem> getFallbackCatalog(@PathVariable("userId") String userId){
+//		return Arrays.asList(new CatalogItem("No Movie", "HystrixCommand fallback command", 2));
+//	}
+	
+	
 }
+
+
+
+
 
 
 //new way is usnig streams but not working 

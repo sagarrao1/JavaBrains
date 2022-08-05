@@ -3,6 +3,8 @@ package com.javabrains.model;
 import java.util.List;
 
 public class UserRating {
+	
+	private String userId;
 	List<Rating> userRating;
 	
 	public UserRating() {
