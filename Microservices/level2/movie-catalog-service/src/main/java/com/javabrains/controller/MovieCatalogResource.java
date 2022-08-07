@@ -55,7 +55,6 @@ public class MovieCatalogResource {
 		
 //		Using Eurekha discovery service, we are removing hard coded uri (localhost:8083) to service name
 		
-				
 		UserRating ratings = userRatingInfo.getUserRating(userId);	
 		
 		

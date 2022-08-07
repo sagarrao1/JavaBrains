@@ -39,6 +39,7 @@ public class RatingsDataResource {
 //		if you want to return Object instead of list , you create new Object with list and return that
 		
 		UserRating userRating=  new UserRating();
+		userRating.setUserId(userId);
 		userRating.setUserRating(ratings);
 		return userRating;
 		
