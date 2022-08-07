@@ -1,0 +1,8 @@
+
+to execute app from command prompt
+
+java -jar springBoot-config-0.0.1-SNAPSHOT.jar --my.greeting='Hello world from command prompt'
+
+
+best url for @configproperties
+https://www.baeldung.com/configuration-properties-in-spring-boot
