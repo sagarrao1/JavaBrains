@@ -1,0 +1,31 @@
+discovery server url
+http://localhost:8761/
+
+ratings service url
+http://localhost:8083/ratingsdata/users/3
+
+movie info service url
+http://localhost:8082/movies/2
+
+movie catalog service , which calls above services internally
+http://localhost:8081/catalog/3
+
+
+https://www.themoviedb.org/login
+sagarrao1
+sagar123
+
+
+API Key: cf459de1b220cd3e4e49a9359204e599
+
+Here's an example API request:
+https://api.themoviedb.org/3/movie/550?api_key=cf459de1b220cd3e4e49a9359204e599
+
+
+
+#hystrix dashboard url
+http://localhost:8081/hystrix
+
+
+
+https://hystrix-app:port/actuator/hystrix.stream
