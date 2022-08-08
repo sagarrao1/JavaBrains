@@ -1,0 +1,15 @@
+app:
+  description: "welcome to ${app.name}"
+  name: My app
+connection: "{connectionString:'http://__', userName:'foo',password:'pass'}"
+db:
+  host: 129.22.4.5
+  port: 1943
+  values:
+    connectionString: "test connection String"
+    password: "pass"
+    userName: "foo"
+listValues: one, two,three
+
+my:
+  greeting: Hello world

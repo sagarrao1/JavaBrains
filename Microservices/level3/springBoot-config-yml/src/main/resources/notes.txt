@@ -6,3 +6,10 @@ java -jar springBoot-config-0.0.1-SNAPSHOT.jar --my.greeting='Hello world from c
 
 best url for @configproperties
 https://www.baeldung.com/configuration-properties-in-spring-boot
+
+
+to run different profile when startting spring boot app
+externilizing environment specific values by using 
+different yamal fils for each environment(dev, qa ,prod
+
+java -jar springBoot-config-yml-0.0.1-SNAPSHOT.jar --spring.profiles.active=test

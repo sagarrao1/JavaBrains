@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,16 +32,26 @@ public class GreetingController {
 	@Autowired
 	private DbSettings dbSettings;
 	
+	@Autowired
+	private Environment env;
+	
 	@RequestMapping("/greeting")
 	public String getGreeting() {
+		System.out.println(dbSettings );
+
 //		return greeting	+ " | "+
 //				staticMsg+ " | "+
 //				appDesc+ " | "+
 //				mapValues+ " | "+
 //				values;
 
-		System.out.println(dbSettings);
-		return dbSettings.getValues() + dbSettings.getHost() + dbSettings.getPort();
+		return dbSettings.getValues() + dbSettings.getHost() + dbSettings.getPort() + " | list of values: "+values ; 
+	}
+	
+	@RequestMapping("/envdetails")
+	public String envdetails() {
+		
+		return env.toString();
 	}
 
 }

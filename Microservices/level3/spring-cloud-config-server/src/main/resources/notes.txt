@@ -1,0 +1,6 @@
+
+spring cloud config server url to see config files
+
+http://localhost:8888 <yaml or properties file name > < profile >
+
+http://localhost:8888/application/default
