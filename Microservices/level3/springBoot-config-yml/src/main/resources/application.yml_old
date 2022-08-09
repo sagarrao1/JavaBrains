@@ -15,7 +15,17 @@ my:
 spring:
   cloud:
     config:
-      uri: http://localhost:8888  
+      uri: http://localhost:8888
+  application:
+    name: springBoot-config-yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    refresh:
+      enabled: true
 #spring:
 #   config:
 #       import: optional:configserver:http:localhost:8888

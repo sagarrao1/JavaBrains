@@ -5,12 +5,14 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javabrains.DbSettings;
 
+@RefreshScope
 @RestController
 public class GreetingController {
 	
@@ -36,6 +38,7 @@ public class GreetingController {
 	private Environment env;
 	
 	@RequestMapping("/greeting")
+	@RefreshScope
 	public String getGreeting() {
 		System.out.println(dbSettings );
 
@@ -45,7 +48,8 @@ public class GreetingController {
 //				mapValues+ " | "+
 //				values;
 
-		return dbSettings.getValues() + dbSettings.getHost() + dbSettings.getPort() + " | list of values: "+values ; 
+		return dbSettings.getValues() + dbSettings.getHost() + dbSettings.getPort() + " | list of values: "+values;
+//		return greeting; 
 	}
 	
 	@RequestMapping("/envdetails")

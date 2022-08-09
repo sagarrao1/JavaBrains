@@ -7,7 +7,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 
 @SpringBootApplication
-//@ConfigurationPropertiesScan("com.javabrains.DbSettings")
 @EnableConfigurationProperties(DbSettings.class)
 public class SpringBootConfigApplication {
 
