@@ -30,6 +30,15 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean> 
 	
+	<bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg  name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean name="simpleJdbcDaoImpl" class="com.javabrains.SpringJdbc.dao.SimpleJdbcDaoImpl">
+		<!-- <constructor-arg  name="dataSource" ref="dataSource"/ -->
+		<constructor-arg  name="jdbcTemplate" ref="jdbcTemplate"/>
+	</bean> 
+	
 	<!-- =======================Integrating spring with Hibernate 5.4 via mySql DB============================== -->
 	
 	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">

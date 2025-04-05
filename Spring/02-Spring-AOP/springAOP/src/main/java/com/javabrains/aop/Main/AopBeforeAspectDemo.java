@@ -8,7 +8,8 @@ public class AopBeforeAspectDemo {
 
 	public static void main(String[] args) {
 		
-		try(ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("spring.xml")){
+		try(ClassPathXmlApplicationContext context =  
+				new ClassPathXmlApplicationContext("spring.xml")){
 			ShapeService shapeService = context.getBean("shapeService", ShapeService.class);
 			shapeService.getCircle().setName("Dummy Name");
 //			System.out.println(shapeService.getCircle().getName());

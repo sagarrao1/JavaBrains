@@ -13,7 +13,8 @@ public class BeanLifeCycleDemo
     {
     	
         //Triangle t= new Triangle();
-    	try(ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring3.xml")){
+    	try(ClassPathXmlApplicationContext context = 
+    			new ClassPathXmlApplicationContext("spring3.xml")){
 //    		context.registerShutdownHook();
     		TriangleNew t =(TriangleNew) context.getBean("triangleNew");    	
     		t.draw();    		

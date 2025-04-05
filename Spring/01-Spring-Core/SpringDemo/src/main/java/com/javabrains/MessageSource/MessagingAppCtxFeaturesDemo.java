@@ -9,7 +9,8 @@ public class MessagingAppCtxFeaturesDemo {
 
 	public static void main(String[] args) {
 		
-		try(ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring5.xml")){
+		try(ClassPathXmlApplicationContext context =
+				new ClassPathXmlApplicationContext("spring5.xml")){
 			Circle circle= (Circle) context.getBean("circle");
 			circle.draw();			
 			

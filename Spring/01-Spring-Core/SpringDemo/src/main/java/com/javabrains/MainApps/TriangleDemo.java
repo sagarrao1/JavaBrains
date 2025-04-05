@@ -10,7 +10,8 @@ public class TriangleDemo
     public static void main( String[] args )
     {
         //Triangle t= new Triangle();
-    	try(ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml")){
+    	try(ClassPathXmlApplicationContext context = 
+    			new ClassPathXmlApplicationContext("spring.xml")){
     		Triangle t =(Triangle) context.getBean("triangle");    	
     		t.draw();    		
     	}

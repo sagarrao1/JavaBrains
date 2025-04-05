@@ -1,0 +1,6 @@
+http://localhost:8080/messenger/webapi/myresource
+we need to use tomcat 10 in order to work
+
+As it is rest api, we need to use postman tool
+http://localhost:8080/messenger/webapi/messages
+

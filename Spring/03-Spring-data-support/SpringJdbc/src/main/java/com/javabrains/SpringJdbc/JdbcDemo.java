@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.javabrains.SpringJdbc.dao.JdbcDaoImpl;
 import com.javabrains.SpringJdbc.dao.JdbcTemplateDaoImpl;
+import com.javabrains.SpringJdbc.dao.SimpleJdbcDaoImpl;
 import com.javabrains.SpringJdbc.model.Circle;
 
 public class JdbcDemo {
@@ -48,6 +49,12 @@ public class JdbcDemo {
 		for (Circle circle : allCircles) {
 			System.out.println(circle);			
 		}
+		
+		
+//		SimpleJdbcDaoImpl dao3= ctx.getBean("simpleJdbcDaoImpl", SimpleJdbcDaoImpl.class);
+//		System.out.println();
+//		System.out.println("Another way of creating simpleJdbcDaoImpl using spring SimpleJdbcCall ");
+//		System.out.println("dao3 no.of records of circle : "+dao3.getCircleCount());
 		
 	}
 }

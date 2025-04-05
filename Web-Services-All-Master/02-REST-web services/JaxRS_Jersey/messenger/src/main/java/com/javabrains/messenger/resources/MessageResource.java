@@ -28,31 +28,31 @@ public class MessageResource {
 	
 	MessageService service = new MessageService();
 	
-//	@GET
-//	public List<Message> getMessage() {		
-//		List<Message> messages = service.getAllMessages();		
-//		for (Message message : messages) {
-//			System.out.println(message.getMessage());
-//		}		
-////		GenericEntity<List<Message>> list = new GenericEntity<List<Message>>(messages) {};
-////	    return Response.ok(list).build();
-//	    
-//		return service.getAllMessages();
-//	}
-
 	@GET
-	public List<Message> getMessages(@QueryParam("year") int year,
-									 @QueryParam("start") int start,
-									 @QueryParam("size") int size) {
-		if (year>0) {
-			return service.getAllmessagesForYear(year);
-		}
-		if (start>=0 && size>0) {
-			return service.getAllmessagesPaginated(start, size);
-		}
-		
+	public List<Message> getMessage() {		
+		List<Message> messages = service.getAllMessages();		
+		for (Message message : messages) {
+			System.out.println(message.getMessage());
+		}		
+//		GenericEntity<List<Message>> list = new GenericEntity<List<Message>>(messages) {};
+//	    return Response.ok(list).build();
+	    
 		return service.getAllMessages();
 	}
+
+//	@GET
+//	public List<Message> getMessages(@QueryParam("year") int year,
+//									 @QueryParam("start") int start,
+//									 @QueryParam("size") int size) {
+//		if (year>0) {
+//			return service.getAllmessagesForYear(year);
+//		}
+//		if (start>=0 && size>0) {
+//			return service.getAllmessagesPaginated(start, size);
+//		}
+//		
+//		return service.getAllMessages();
+//	}
 	
    /* This is same as above if you have more params, we can use beanparam by creating new class	*/	
 //	@GET

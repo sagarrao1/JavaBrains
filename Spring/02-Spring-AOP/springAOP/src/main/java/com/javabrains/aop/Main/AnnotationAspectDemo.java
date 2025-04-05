@@ -8,7 +8,8 @@ public class AnnotationAspectDemo {
 
 	public static void main(String[] args) {
 		
-		try(ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("spring.xml")){
+		try(ClassPathXmlApplicationContext context =  
+				new ClassPathXmlApplicationContext("spring.xml")){
 			ShapeService shapeService = context.getBean("shapeService", ShapeService.class);
 //			shapeService.getCircle().setNameAndReturn("setNameAndReturn method called");			
 			shapeService.getCircle().getName();

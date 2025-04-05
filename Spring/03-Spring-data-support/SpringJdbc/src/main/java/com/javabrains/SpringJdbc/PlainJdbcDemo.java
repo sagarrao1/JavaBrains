@@ -12,7 +12,8 @@ public class PlainJdbcDemo {
 //		Circle circle = new PlainJdbcDaoImpl().getCircle(1);
 //		System.out.println(circle.getName());		
 		
-		  try(ClassPathXmlApplicationContext ctx= new ClassPathXmlApplicationContext("spring.xml")){			  
+		  try(ClassPathXmlApplicationContext ctx= 
+				  new ClassPathXmlApplicationContext("spring.xml")){			  
 			  PlainJdbcDaoImpl dao =ctx.getBean("plainJdbcDaoImpl",PlainJdbcDaoImpl.class);
 			  Circle circle=dao.getCircle(1); 
 			  System.out.println(circle.getName());
