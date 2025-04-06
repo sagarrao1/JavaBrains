@@ -17,7 +17,6 @@ import jakarta.ws.rs.core.Response.Status;
 
 public class CommentService {
 
-//	public static Map<Long, Comment> Comments = DatabaseClass.getComments();
 	public static Map<Long, Message> messages = DatabaseClass.getMessages();
 
 //	{
@@ -32,31 +31,33 @@ public class CommentService {
 	}
 	
 	public Comment getComment(long messageId, long commentid) {
- 		ErrorMessage errMsg = new ErrorMessage("Message Not found",404,"http://localhost:8080/messenger/error");
-		 Response response = Response.status(Status.NOT_FOUND)
-						.entity(errMsg)
-						.build();
 		
-		 Message message = messages.get(messageId);	
+//		2nd way using WebApplicationException
+		ErrorMessage errMsg = new ErrorMessage("Message Not found",404,"http://localhost:8080/messenger/error");
+		Response response = Response.status(Status.NOT_FOUND)
+				.entity(errMsg)
+				.build();
+		
+		Message message = messages.get(messageId);	
 		if (message == null) {
 			throw new WebApplicationException(response);
 		}
+
 		
+//		3rd way using custom exceptions in WebApplicationException
 		Map<Long, Comment> comments = messages.get(messageId).getComments();
-		Comment comment = comments.get(commentid);
-		
+		Comment comment = comments.get(commentid);		
 		errMsg.setErrorMsg("Comment Not found");
 		if (comment == null) {
 			throw new NotFoundException(response);
 		}
+
+
+		
 		return comments.get(commentid);
 	}
 
-	public void removeComment(long messageId, long commentid) {
-		System.out.println("removing.....");
-		Map<Long, Comment> comments = messages.get(messageId).getComments();
-		comments.remove(commentid);
-	}
+
 
 	public Comment addComment(long messageId, Comment cmt) {
 		Map<Long, Comment> comments = messages.get(messageId).getComments();
@@ -74,4 +75,9 @@ public class CommentService {
 		return cmt;
 	}
 
+	public void removeComment(long messageId, long commentid) {
+		System.out.println("removing.....");
+		Map<Long, Comment> comments = messages.get(messageId).getComments();
+		comments.remove(commentid);
+	}
 }

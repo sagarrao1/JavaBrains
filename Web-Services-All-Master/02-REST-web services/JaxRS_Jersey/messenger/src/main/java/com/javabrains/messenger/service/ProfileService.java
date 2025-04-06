@@ -13,11 +13,12 @@ public class ProfileService {
 public static Map<String, Profile> profiles = DatabaseClass.getProfiles();
 	
 	public ProfileService() {
-		profiles.put("sagar", new Profile(1L,"Sagar", new Date()));
+//		profiles.put("Sagar", new Profile(1L,"Sagar", new Date()));
+//		profiles.put("Ram", new Profile(2L,"Ram", new Date()));
 	}
 
 	public List<Profile> getProfiles(){	
-		return new ArrayList<>( profiles.values()); 
+		return new ArrayList<Profile>( profiles.values()); 
 	}
 	
 	public Profile getProfile(String profileName) {

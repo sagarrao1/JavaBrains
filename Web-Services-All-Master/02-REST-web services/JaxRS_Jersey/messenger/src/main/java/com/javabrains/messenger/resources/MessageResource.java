@@ -5,8 +5,11 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import com.javabrains.messenger.model.Message;
+import com.javabrains.messenger.resources.beans.MessageFilterBean;
 import com.javabrains.messenger.service.MessageService;
 
+import jakarta.inject.Singleton;
+import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -19,40 +22,47 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 import jakarta.ws.rs.core.UriInfo;
 
 @Path("/messages")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+//@Produces({MediaType.APPLICATION_JSON})
 public class MessageResource {
 	
 	MessageService service = new MessageService();
 	
-	@GET
-	public List<Message> getMessage() {		
-		List<Message> messages = service.getAllMessages();		
-		for (Message message : messages) {
-			System.out.println(message.getMessage());
-		}		
-//		GenericEntity<List<Message>> list = new GenericEntity<List<Message>>(messages) {};
-//	    return Response.ok(list).build();
-	    
-		return service.getAllMessages();
-	}
-
 //	@GET
-//	public List<Message> getMessages(@QueryParam("year") int year,
-//									 @QueryParam("start") int start,
-//									 @QueryParam("size") int size) {
-//		if (year>0) {
-//			return service.getAllmessagesForYear(year);
-//		}
-//		if (start>=0 && size>0) {
-//			return service.getAllmessagesPaginated(start, size);
-//		}
-//		
+//	public List<Message> getMessages() {		
+//		List<Message> messages = service.getAllMessages();		
+//		for (Message message : messages) {
+//			System.out.println(message.getMessage());
+//		}		
+////		GenericEntity<List<Message>> list = new GenericEntity<List<Message>>(messages) {};
+////	    return Response.ok(list).build();
+//	    
 //		return service.getAllMessages();
 //	}
+
+//	http://localhost:8080/messenger/webapi/messages?year=2001
+//	http://localhost:8080/messenger/webapi/messages?start=1&size=1
+	
+//	Page nation and Filtering
+	
+	@GET
+	public List<Message> getMessages(@QueryParam("year") int year,
+									 @QueryParam("start") int start,
+									 @QueryParam("size") int size) {
+		if (year>0) {
+			return service.getAllmessagesForYear(year);
+		}
+		if (start>=0 && size>0) {
+			return service.getAllmessagesPaginated(start, size);
+		}
+	
+		return service.getAllMessages();
+	}
 	
    /* This is same as above if you have more params, we can use beanparam by creating new class	*/	
 //	@GET
@@ -62,14 +72,14 @@ public class MessageResource {
 //		}
 //		if (filterBean.getStart()>=0 && filterBean.getSize()>0) {
 //			return service.getAllmessagesPaginated(filterBean.getStart(), filterBean.getSize());
-//		}
-//		
+//		}		
 //		return service.getAllMessages();
 //	}
 	
 	
 	@POST
 	public Response addMessage(Message msg , @Context UriInfo uriInfo) throws URISyntaxException{
+//		without Response
 //		return service.addMessage(msg);
 		
 		Message addMessage = service.addMessage(msg);
@@ -78,29 +88,23 @@ public class MessageResource {
 //		return Response.status(Status.CREATED)
 //				.entity(addMessage)
 //				.build();
-		
-		/* 2nd way */
+//		
+//		/* 2nd way it will set status created and URI*/
 //		return Response.created(new URI("/messenger/webapi/messages/"+ addMessage.getId()))
 //				.entity(addMessage)
 //				.build();	
-		
-		/* 3nd way */
-//		uriInfo.getAbsolutePath();
-		String newId=String.valueOf(addMessage.getId());
-		URI uri = uriInfo.getAbsolutePathBuilder()
-				.path(newId)
-				.build();
-		
+//		
+//		/* 3nd way better way than 2nd*/		
+		String newId = String.valueOf(addMessage.getId());
+		URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
 		return Response.created(uri)
 				.entity(addMessage)
-				.build();	
-		
+				.build();
 	}
 	
 	@GET
 	@Path("/{messageid}")
-	public Message getMessage(@PathParam("messageid") long messageId,
-							  @Context UriInfo uriInfo) {
+	public Message getMessage(@PathParam("messageid") long messageId, @Context UriInfo uriInfo) {
 		Message message = service.getMessage(messageId);
 		/* 1st way */
 //		message.addLink(uriInfo.getAbsolutePath().toString(), "self");
@@ -149,16 +153,33 @@ public class MessageResource {
 
 	@DELETE
 	@Path("/{messageid}")
-	public void removeMessage(@PathParam("messageid") long id) {
-		service.removeMessage(id);
+	public Message removeMessage(@PathParam("messageid") long msgId) {
+		return service.removeMessage(msgId);
 	}
 	
 	/* important we should not add @GET here. it won't work if we add */
 	
 	@Path("/{messageid}/comments")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Singleton
 	public CommentResource getCommentResource() {
 		return new CommentResource();
 	}
+	
+	
+//	to differentiate json and xml method . depends client calls in accept as text/xml or application/json from postman
+	
+//	@GET
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public List<Message> getJSONMessages() {		
+//		System.out.println("JSON method is called");
+//		return service.getAllMessages();
+//	}
+//	
+//	@GET
+//	@Produces(MediaType.TEXT_XML)
+//	public List<Message> getXMLMessages() {
+//		System.out.println("Xml method is called");
+//		return service.getAllMessages();
+//	}
 
 }

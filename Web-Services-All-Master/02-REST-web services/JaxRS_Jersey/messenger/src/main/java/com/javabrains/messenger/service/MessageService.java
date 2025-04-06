@@ -20,8 +20,8 @@ public class MessageService {
 //		System.out.println(" MessageService constrctor is getting called");
 //	}
 
-	public List<Message> getAllMessages() {
-		return new ArrayList<>(messages.values());
+	public List<Message> getAllMessages(){		
+		return  new ArrayList<Message>(messages.values());
 	}
 
 	public List<Message> getAllmessagesForYear(int year) {
@@ -36,22 +36,22 @@ public class MessageService {
 				System.out.println("year add: "+year);
 			}
 		}
-		return messagesYear;
+		return messagesYear;	
 	}
 
 	public List<Message> getAllmessagesPaginated(int start, int size) {
 		int count = 0;
 		List<Message> messagesPaged = new ArrayList<>();
 		for (Message message : messages.values()) {
-			if (message.getId() >= start) {	
-				if ((count < size)) {
+			if (message.getId() >= start) {
+				if (count < size) {
 					messagesPaged.add(message);
 					count++;
 				}
 			}
 		}
 		return messagesPaged;
-		
+	}	
 //		or
 		
 //		List<Message> messagesPaged = new ArrayList<>(messages.values());
@@ -60,7 +60,7 @@ public class MessageService {
 //		}
 //		return messagesPaged.subList(start, size);
 		
-	}
+//	}
 
 	public Message getMessage(long id) {
 		Message message = messages.get(id);
@@ -70,19 +70,19 @@ public class MessageService {
 		return message;
 	}
 
-	public void removeMessage(long id) {
+	public Message removeMessage(long id) {
 		System.out.println("removing.....");
-		messages.remove(id);
+		return messages.remove(id);
 	}
 
 	public Message addMessage(Message msg) {
-		msg.setId(messages.size() + 1);
+		msg.setId(messages.size()+1);
 		messages.put(msg.getId(), msg);
 		return msg;
 	}
 
 	public Message updateMessage(Message msg) {
-		if (msg.getId() <= 0) {
+		if (msg.getId() <=0) {
 			return null;
 		}
 		messages.put(msg.getId(), msg);

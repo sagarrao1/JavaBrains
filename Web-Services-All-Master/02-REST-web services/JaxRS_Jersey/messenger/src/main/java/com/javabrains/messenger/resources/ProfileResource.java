@@ -47,6 +47,7 @@ public class ProfileResource {
 	@Path("/{profileName}")
 	public Profile updateprofile(@PathParam("profileName") String profileName, Profile profile) {
 		profile.setProfileName(profileName);
+		System.out.println(profile);
 		return profileService.updateProfile(profile);
 //		return profile;
 	}

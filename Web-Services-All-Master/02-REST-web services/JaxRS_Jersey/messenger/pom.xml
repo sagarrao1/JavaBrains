@@ -51,12 +51,7 @@
 			<groupId>org.glassfish.jersey.inject</groupId>
 			<artifactId>jersey-hk2</artifactId>
 		</dependency>
-		<!-- uncomment this to get JSON support-->
-		<!-- <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-binding</artifactId>
-        </dependency>-->
-
+	
 
 		<!-- <dependency>
 		    <groupId>javax.servlet</groupId>
@@ -85,11 +80,11 @@
 
 
 		<!-- uncomment this to support JSON format -->
-		<!--	<dependency>
+			<dependency>
 		    <groupId>org.glassfish.jersey.media</groupId>
 		    <artifactId>jersey-media-moxy</artifactId>
 		    <version>3.0.4</version>
-		</dependency>-->
+		</dependency>
 
 		<!--we need these jakarta from jdk 11 or newer version for xml jaxb marshelling and unmarshell-->
 		<dependency>

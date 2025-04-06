@@ -21,7 +21,7 @@ public class CommentResource {
 	CommentService cmtService = new CommentService();
 
 	@GET
-	public List<Comment> getComments(@PathParam("messageid") long messageid) {
+	public List<Comment> getAllComments(@PathParam("messageid") long messageid) {
 		return cmtService.getAllComments(messageid);
 	}
 

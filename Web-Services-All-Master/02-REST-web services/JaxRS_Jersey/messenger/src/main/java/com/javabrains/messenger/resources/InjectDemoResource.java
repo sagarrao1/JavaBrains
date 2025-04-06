@@ -19,6 +19,8 @@ import jakarta.ws.rs.core.UriInfo;
 @Produces({MediaType.TEXT_PLAIN})
 public class InjectDemoResource {
 
+	
+//	http://localhost:8080/messenger/webapi/injectdemo/annotations;param=value
 	@GET
 	@Path("annotations")
 	public String getparamsusingAnnotation(@MatrixParam("param") String matrixparam,

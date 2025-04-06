@@ -45,4 +45,10 @@ public class Profile {
 		this.created = created;
 	}
 
+	@Override
+	public String toString() {
+		return "Profile [id=" + id + ", profileName=" + profileName + ", created=" + created + "]";
+	}
+
+	
 }

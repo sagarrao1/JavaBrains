@@ -1,12 +1,13 @@
 package com.javabrains.messenger.exception;
 
-public class DataNotFoundException extends RuntimeException{
-	
-	private static final long serialVersionUID = 4304210123855126618L;
+public class DataNotFoundException extends RuntimeException {
 
-	public DataNotFoundException(String message) {
-		super(message);
+	private static final long serialVersionUID = 1L;
+
+	public DataNotFoundException(String errMsg ){
+		super(errMsg);
 	}
-
+	
+	
 	
 }

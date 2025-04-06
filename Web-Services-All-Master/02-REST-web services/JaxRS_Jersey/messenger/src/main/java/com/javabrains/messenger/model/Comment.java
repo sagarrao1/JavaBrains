@@ -40,6 +40,11 @@ public class Comment {
 		this.created = created;
 	}
 	
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", commentMsg=" + commentMsg + ", created=" + created + "]";
+	}
+	
 	
 	
 	

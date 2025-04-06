@@ -1,6 +1,31 @@
 http://localhost:8080/messenger/webapi/myresource
 we need to use tomcat 10 in order to work
 
-As it is rest api, we need to use postman tool
 http://localhost:8080/messenger/webapi/messages
+
+As it is rest api, we need to use postman tool
+postman tool has Messager_java_brains collection
+ 
+
+http://localhost:8080/messenger/webapi/messages/1
+
+
+Page nation and Filtering
+http://localhost:8080/messenger/webapi/messages?year=2001
+http://localhost:8080/messenger/webapi/messages?start=1&size=1
+
+
+matrixParam
+http://localhost:8080/messenger/webapi/injectdemo/annotations;param=value
+
+add header to above api like below and  you can read header value in code using @HeaderParam
+customHeadervalue
+
+
+@Context UriInfo uriInfo
+http://localhost:8080/messenger/webapi/injectdemo/context
+
+
+sub resource
+http://localhost:8080/messenger/webapi/messages/1/comments
 

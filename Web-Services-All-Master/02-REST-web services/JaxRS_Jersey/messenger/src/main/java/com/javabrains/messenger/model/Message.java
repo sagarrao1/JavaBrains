@@ -1,4 +1,4 @@
-package com.javabrains.messenger.model;
+ package com.javabrains.messenger.model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,6 +51,7 @@ public class Message {
 	public void setLinks(List<Link> links) {
 		this.links = links;
 	}
+	
 	public Message() {
 		
 	}
