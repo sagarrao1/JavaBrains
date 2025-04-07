@@ -1,0 +1,10 @@
+
+http://localhost:8080/Advanced-JaxRs-02/
+
+http://localhost:8080/Advanced-JaxRs-02/webapi/test
+
+
+default scope is request scope. everytime we call api. it always creat new instance of resource
+so it will be always count 1
+to change default scope to singleton, we use annotation
+so that it will resuse same instance when we call net time. count will increase

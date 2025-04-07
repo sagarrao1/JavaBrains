@@ -1,0 +1,11 @@
+
+http://localhost:8080/Advanced-JaxRs-04/
+
+http://localhost:8080/Advanced-JaxRs-04/webapi/test
+
+
+http://localhost:8080/Advanced-JaxRs-04/webapi//date/{dateString}
+
+http://localhost:8080/Advanced-JaxRs-04/webapi/date/today
+http://localhost:8080/Advanced-JaxRs-04/webapi/date/tomorrow
+http://localhost:8080/Advanced-JaxRs-04/webapi/date/yesterday

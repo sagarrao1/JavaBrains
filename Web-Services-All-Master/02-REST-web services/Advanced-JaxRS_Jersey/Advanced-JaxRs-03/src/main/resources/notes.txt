@@ -1,0 +1,4 @@
+
+http://localhost:8080/Advanced-JaxRs-03/
+
+http://localhost:8080/Advanced-JaxRs-03/webapi/{pathParam}/test

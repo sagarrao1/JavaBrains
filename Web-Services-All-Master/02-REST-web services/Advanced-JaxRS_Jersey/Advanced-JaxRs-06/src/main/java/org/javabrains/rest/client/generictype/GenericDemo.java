@@ -26,36 +26,44 @@ public class GenericDemo {
 		WebTarget messagesTarget = baseTarget.path("messages/");
 		
 		Response response = messagesTarget
-							.queryParam("year", 2022)
+							.queryParam("year", 2025)
 							.request(MediaType.APPLICATION_JSON)
 							.get();
-
 		List<Message> messagelist = response.readEntity(new GenericType<List<Message>>() {});
 		messagelist.forEach(m -> System.out.println(m));
+
+
+//		List response = messagesTarget
+//				.queryParam("year", 2025)
+//				.request(MediaType.APPLICATION_JSON)
+//				.get(List.class);
+//		
+//		response.forEach(m -> System.out.println(m));
+
 		
-		System.out.println();
+//		System.out.println();
 		
 		// 2nd way to access List<Messages> using genericType<>
-		List<Message> messagelist2 = messagesTarget
-				.queryParam("year", 2022)
-				.request(MediaType.APPLICATION_JSON)
-				.get(new GenericType<List<Message>>() {});
-
-		messagelist2.forEach(m -> System.out.println(m));
-		
-		System.out.println();
-		
-		//Accessing List<messages> using Invocation classs
-		InvocationDemo demo = new InvocationDemo();		
-		Invocation invocationYear = demo.getMessageUsingYear(2022);
-		Response response3 = invocationYear.invoke();
-		
-		if (response3.getStatus() != 200) {
-			System.out.println("Error..");
-		}
-		
-		List<Message> messagelist3 = response3.readEntity(new GenericType<List<Message>>() {});
-		messagelist3.forEach(m -> System.out.println(m));
+//		List<Message> messagelist2 = messagesTarget
+//				.queryParam("year", 2022)
+//				.request(MediaType.APPLICATION_JSON)
+//				.get(new GenericType<List<Message>>() {});
+//
+//		messagelist2.forEach(m -> System.out.println(m));
+//		
+//		System.out.println();
+//		
+//		//Accessing List<messages> using Invocation classs
+//		InvocationDemo demo = new InvocationDemo();		
+//		Invocation invocationYear = demo.prepareRequestMessagesByYear(2022);
+//		Response response3 = invocationYear.invoke();
+//		
+//		if (response3.getStatus() != 200) {
+//			System.out.println("Error..");
+//		}
+//		
+//		List<Message> messagelist3 = response3.readEntity(new GenericType<List<Message>>() {});
+//		messagelist3.forEach(m -> System.out.println(m));
 	}
 
 }

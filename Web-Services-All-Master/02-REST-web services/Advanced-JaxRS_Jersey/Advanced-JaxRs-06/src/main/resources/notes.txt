@@ -1,0 +1,11 @@
+
+http://localhost:8080/Advanced-JaxRs-06/
+
+http://localhost:8080/Advanced-JaxRs-06/webapi/test
+
+
+http://localhost:8080/Advanced-JaxRs-06/webapi/messages
+
+Execute RestClient.java as Java application as it has main method
+before that run messager as run on server
+use tomcat 10 

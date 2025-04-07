@@ -1,0 +1,12 @@
+
+Custom message body writer & Custom Media Type
+
+It works only in postman
+where we use accepts as text/shortdate to display date as short
+
+
+
+test in postman
+
+
+http://localhost:8080/Advanced-JaxRs-05/webapi/test

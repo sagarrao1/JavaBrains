@@ -9,7 +9,6 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("{pathParam}/test")
-@Singleton
 public class MyResource {
 	
 	@PathParam("pathParam") String pathParamExample;

@@ -16,20 +16,21 @@ public class RestApiCient {
 		
 		
 //		1nd way
+//		Response response = client.target("http://localhost:8080/Advanced-JaxRs-06/webapi/messages/2").request().get();		
+//		Message message = response.readEntity(Message.class);
+//		System.out.println(message.getMessage());
+		
+		
+//		2nd way		
 //		WebTarget target = client.target("http://localhost:8080/Advanced-JaxRs-06/webapi/messages/2");
 //		Builder request = target.request();
 //		Response response = request.get();
 //		Message message = response.readEntity(Message.class);
 //		System.out.println(message.getMessage());
 
-//		2nd way
-//		Response response = client.target("http://localhost:8080/Advanced-JaxRs-06/webapi/messages/2").request().get();		
-//		Message message = response.readEntity(Message.class);
-//		System.out.println(message.getMessage());
-		
 		
 //		3rd way
-//		Message message = client.target("http://localhost:8080/Advanced-JaxRs-06/webapi/messages/2")
+//		Message message = client.target("http://localhost:8080/Advanced-JaxRs-06/webapi/messages/1")
 //				                  .request(MediaType.APPLICATION_JSON)
 //				                  .get(Message.class);		
 //		System.out.println(message.getMessage());

@@ -1,0 +1,20 @@
+
+http://localhost:8080/Advanced-JaxRs-07/
+
+Filter demo (filter package)
+http://localhost:8080/Advanced-JaxRs-07/webapi/test
+
+
+REST APIs are stateless !. will not store any session info
+Application server does not maintain and state
+when it gets request , it serves response
+different types of secure 
+
+Basic Authentication demo
+http://localhost:8080/Advanced-JaxRs-07/webapi/secured/message
+
+
+we need to test this from postman , 
+select authorization in request and type user and password before api call
+user
+password1555

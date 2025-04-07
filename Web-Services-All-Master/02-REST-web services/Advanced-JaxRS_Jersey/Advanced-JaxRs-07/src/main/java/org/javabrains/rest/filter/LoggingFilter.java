@@ -8,7 +8,7 @@ import jakarta.ws.rs.container.ContainerResponseContext;
 import jakarta.ws.rs.container.ContainerResponseFilter;
 import jakarta.ws.rs.ext.Provider;
 
-@Provider
+//@Provider
 public class LoggingFilter implements ContainerRequestFilter, ContainerResponseFilter{
 
 	
@@ -26,7 +26,7 @@ public class LoggingFilter implements ContainerRequestFilter, ContainerResponseF
 	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
 			throws IOException {
 		System.out.println("Response filter : ");
-		System.out.println("Headers " + requestContext.getHeaders());
+		System.out.println("Headers " + responseContext.getHeaders());
 		
 	}
 

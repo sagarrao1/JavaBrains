@@ -18,18 +18,24 @@ public class InvocationDemo {
 		InvocationDemo demo = new InvocationDemo();
 		
 		// using id for http://localhost:8080/Advanced-JaxRs-06/webapi/messages/2
-//		Invocation invocation = demo.getMessageUsingId(2);
-//		Response response = invocation.invoke();
-//		if (response.getStatus() != 200) {
-//			System.out.println("Error..");
-//		}
-//		
-//		Message message = response.readEntity(Message.class);
-//		System.out.println(message.getAuthor());		
+		Invocation invocation = demo.prepareMessageById(2);
 		
+//		this is step that actually calls/invoke rest api call
+//		invocation is to prepare entire request. we are deligating to other methd to make this call cleaner
+//		 we are making just 2 step process
+		Response response = invocation.invoke();
 		
-		// using year with Query param as year for http://localhost:8080/Advanced-JaxRs-06/webapi/messages?year=2022
-		Invocation invocationYear = demo.getMessageUsingYear(2022);
+		if (response.getStatus() != 200) {
+			System.out.println("Error..");
+		}
+		
+		Message message = response.readEntity(Message.class);
+		System.out.println(message.getAuthor());		
+		System.out.println("---------------------------------------------");
+		
+		// using year with Query param as year for http://localhost:8080/Advanced-JaxRs-06/webapi/messages?year=2025
+		// Update current year
+		Invocation invocationYear = demo.prepareRequestMessagesByYear(2025);
 		Response response2 = invocationYear.invoke();
 		
 		if (response2.getStatus() != 200) {
@@ -45,7 +51,7 @@ public class InvocationDemo {
 		
 	}
 
-	public Invocation getMessageUsingId(int id) {
+	public Invocation prepareMessageById(int id) {
 		
 		Client client = ClientBuilder.newClient();
 		
@@ -62,7 +68,7 @@ public class InvocationDemo {
 	}
 	
 	
-	public Invocation getMessageUsingYear(int year) {
+	public Invocation prepareRequestMessagesByYear(int year) {
 		
 		Client client = ClientBuilder.newClient();
 		

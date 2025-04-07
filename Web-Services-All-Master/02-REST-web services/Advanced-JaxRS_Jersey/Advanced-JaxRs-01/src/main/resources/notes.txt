@@ -1,0 +1,4 @@
+
+http://localhost:8080/Advanced-JaxRs-01/
+
+http://localhost:8080/Advanced-JaxRs-01/webapi/test

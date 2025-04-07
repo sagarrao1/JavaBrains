@@ -21,7 +21,7 @@ public class DatabaseClass {
 	
 	public static Map<Long, Message> getMessages(){
 		messages.put(1L, new Message(1, "First Message", new Date(), "sagar"));
-		messages.put(2L, new Message(2, "Second Message", new Date(100, 12, 02), "Murali"));
+		messages.put(2L, new Message(2, "Second Message", new Date()/*new Date(100, 12, 02)*/, "Murali"));
 		System.out.println(" DatabaseClass is getting called");
 		return messages;
 	}

@@ -24,8 +24,9 @@ public class MyResource {
 //	Custom MediaType example
 	
 	@GET
-	@Produces(value = {MediaType.TEXT_PLAIN, "text/shortdate"})
+	@Produces(value = {  MediaType.TEXT_PLAIN,  "text/shortdate"})
 	public Date customMediaType() {
+		System.out.println(Calendar.getInstance().getTime());
 		return Calendar.getInstance().getTime(); 
 	}
 	

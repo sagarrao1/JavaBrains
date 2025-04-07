@@ -16,7 +16,7 @@ public class MyResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String testMethod() {
 		count++;
-		return "test method. count is increased to "+count+" times"; 
+		return "test method. count is increased to "+count+" times if we use Singleton Annotation. otherwise it will be 1 always"; 
 	}
 
 }

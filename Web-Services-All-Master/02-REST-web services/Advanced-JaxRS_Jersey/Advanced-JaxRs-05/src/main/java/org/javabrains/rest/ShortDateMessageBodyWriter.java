@@ -35,8 +35,9 @@ public class ShortDateMessageBodyWriter  implements MessageBodyWriter<Date>{
 			MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
 			throws IOException, WebApplicationException {
 //		String shortDate= date.getDate()+"/"+date.getMonth()+" / "+date.getYear();
+//		entityStream.write(shortDate.getBytes());
 		LocalDate localDate = LocalDate.now();
-//		System.out.println(localDate.toString());
+		System.out.println(localDate.toString());
 		entityStream.write(localDate.toString().getBytes());
 	}
 
